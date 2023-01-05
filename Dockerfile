@@ -5,9 +5,10 @@ RUN apt-get update -y && \
 
 WORKDIR /app
 
-RUN pip install flask logging datetime
+RUN pip install flask
 
-COPY . /app
+COPY app.py /app
+COPY flag.txt /app
 
 RUN chmod 555 /app
 
