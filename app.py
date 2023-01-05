@@ -9,6 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
+
     logging.info("New request for / from %s", request.remote_addr)
     logging.info("Request.args is %s", request.args)
     date = request.args.get('date')
@@ -28,7 +29,7 @@ def home():
         is ''' + tenders_percentage(date) + '''!</h3>
 
         To check another date, include a ?date query with the URL.
-        <br><a href="/?date=01-11-2023">Example query for 01-11-2023</a> 
+        <br><a href="/?date=01-18-2023">Example query for 01-18-2023</a> 
       </body>
     </html>'''
 
@@ -49,7 +50,4 @@ def tenders_percentage(date):
 
 
 if __name__ == '__main__':
-    with open('flag.txt') as f:
-        flag = f.read()
-
     app.run()
