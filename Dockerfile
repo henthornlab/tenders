@@ -16,5 +16,5 @@ USER 1000:1000
 
 ENTRYPOINT [ "python3" ]
 
-EXPOSE 5000
+EXPOSE 3000
 CMD [ "app.py" ]
