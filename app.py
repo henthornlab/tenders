@@ -25,9 +25,9 @@ def tenders_percentage(date):
     # Create a datetime object from the string
     try:
         dt = datetime.datetime.strptime(date, '%m-%d-%Y').date()
-        # Find the day of the week. There's the 50% chance of tenders on Wednesdays
+        # Find the day of the week. There's a 25% chance of tenders on Wednesdays
         if dt.weekday() == 2:
-            return '50%'
+            return '25%'
         else:
             return '0%'
     except:
