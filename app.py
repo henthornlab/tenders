@@ -17,22 +17,7 @@ def home():
         today = datetime.date.today()
         date = today.strftime("%m-%d-%Y")
 
-    template = '''
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>Chicken Tenders Calculator</title>
-      </head>
-      <body>
-        <h1>Welcome to the CTPC -- The Chicken Tenders Probability Calculator</h1>
-        <h3>Percent likelihood of chicken tenders being served on ''' + date + ''' 
-        is ''' + tenders_percentage(date) + '''!</h3>
-
-        To check another date, include a ?date query with the URL.
-        <br><a href="/?date=01-18-2023">Example query for 01-18-2023</a> 
-      </body>
-    </html>'''
-
+    template = create_response(date)
     return render_template_string(template)
 
 
@@ -48,6 +33,22 @@ def tenders_percentage(date):
     except:
         return '<i>ERROR<br>Cannot calculate percentage because date is not in correct month-day-year format. (e.g. 12-23-2023)</i>'
 
+def create_response(date):
+    return '''
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <title>Chicken Tenders Calculator</title>
+          </head>
+          <body>
+            <h1>Welcome to the CTPC -- The Chicken Tenders Probability Calculator</h1>
+            <h3>Percent likelihood of chicken tenders being served on ''' + date + ''' 
+            is ''' + tenders_percentage(date) + '''!</h3>
+
+            To check another date, include a ?date query with the URL.
+            <br><a href="/?date=01-18-2023">Example query for 01-18-2023</a> 
+          </body>
+        </html>'''
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=3000)
