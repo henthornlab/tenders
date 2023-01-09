@@ -25,11 +25,17 @@ def tenders_percentage(date):
     # Create a datetime object from the string
     try:
         dt = datetime.datetime.strptime(date, '%m-%d-%Y').date()
-        # Find the day of the week. There's a 25% chance of tenders on Wednesdays
+        # Chances are good on Wednesdays
         if dt.weekday() == 2:
-            return '25%'
+            # And they seem to be served once a month on the 2nd week
+            if (dt.isocalendar().week % 4 - 2) == 0:
+                return '''<b>very good!!</b>
+                    <br><img src="https://raw.githubusercontent.com/henthornlab/assets/main/chicken.gif" alt="dancing tenders">
+                    <br><br>'''
+            else:
+                return '''better than average.<br><br>'''
         else:
-            return '0%'
+            return 'not very high. Sorry.'
     except:
         return '<i>ERROR<br>Cannot calculate percentage because date is not in correct month-day-year format. (e.g. 12-23-2023)</i>'
 
@@ -37,16 +43,17 @@ def create_response(date):
     return '''
         <!DOCTYPE html>
         <html>
-          <head>
-            <title>Chicken Tenders Calculator</title>
-          </head>
+          <head><title>Chicken Tenders Calculator</title></head>
           <body>
             <h1>Welcome to the CTPC -- The Chicken Tenders Probability Calculator</h1>
-            <h3>Percent likelihood of chicken tenders being served on ''' + date + ''' 
-            is ''' + tenders_percentage(date) + '''!</h3>
+            <h3>The likelihood of chicken tenders being served on ''' + date + ''' 
+            is ''' + tenders_percentage(date) + '''</h3>
 
             To check another date, include a ?date query with the URL.
-            <br><a href="/?date=01-18-2023">Example query for 01-18-2023</a> 
+            <br><a href="/?date=01-01-2023">Example query for 01-01-2023</a>
+            <br><a href="/?date=01-11-2023">Example query for 01-11-2023</a>
+            <br><a href="/?date=01-18-2023">Example query for 01-18-2023</a>
+            <br><br>     
           </body>
         </html>'''
 
