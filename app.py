@@ -28,7 +28,7 @@ def tenders_percentage(date):
         # Chances are good on Thursdays
         if dt.weekday() == 3:
             # And they seem to be served once a month on the 2nd week
-            if (dt.isocalendar().week % 4 - 2) == 0:
+            if (dt.isocalendar().week % 4 - 1) == 0:
                 return '''<b>very good!!</b>
                     <br><img src="https://raw.githubusercontent.com/henthornlab/assets/main/chicken.gif" alt="dancing tenders">
                     <br><br>'''
