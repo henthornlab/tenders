@@ -25,8 +25,8 @@ def tenders_percentage(date):
     # Create a datetime object from the string
     try:
         dt = datetime.datetime.strptime(date, '%m-%d-%Y').date()
-        # Chances are good on Wednesdays
-        if dt.weekday() == 2:
+        # Chances are good on Thursdays
+        if dt.weekday() == 3:
             # And they seem to be served once a month on the 2nd week
             if (dt.isocalendar().week % 4 - 2) == 0:
                 return '''<b>very good!!</b>
@@ -50,9 +50,9 @@ def create_response(date):
             is ''' + tenders_percentage(date) + '''</h3>
 
             To check another date, include a ?date query with the URL.
-            <br><a href="/?date=01-01-2023">Example query for 01-01-2023</a>
-            <br><a href="/?date=01-11-2023">Example query for 01-11-2023</a>
-            <br><a href="/?date=01-18-2023">Example query for 01-18-2023</a>
+            <br><a href="/?date=09-14-2023">Example query for 09-14-2023</a>
+            <br><a href="/?date=09-15-2023">Example query for 09-15-2023</a>
+            <br><a href="/?date=09-21-2023">Example query for 09-21-2023</a>
             <br><br>     
           </body>
         </html>'''
